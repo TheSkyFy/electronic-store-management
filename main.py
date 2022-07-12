@@ -305,5 +305,5 @@ def run():
     get_email()
     get_pin_code()
     get_address()
-    Main_Menu()s
+    Main_Menu()
 run()
