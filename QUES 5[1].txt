@@ -1,0 +1,274 @@
+SOURCE CODE:
+#Program 5: Menu driven program using binary files
+#Kushagra  12A 
+import pickle
+import os
+
+def add():
+    F = open("bid.dat","wb")
+    list1 = []
+    while True:
+        print("*"*30,"Entry of a record","*"*30)
+        bid = int(input("Enter B.Id: "))
+        arrival = str(input("Enter arrival: "))
+        destination = str(input("Enter destination: "))
+        doj = str(input("Enter doj: "))
+        fare = float(input("Enter fare: "))
+        list = [bid,arrival,destination,doj,fare]
+        list1.append(list)
+        print("*"*32,"Entry Inserted","*"*31)
+        print()
+        cont = input("Would you like to add more records? ")
+        print()
+        if cont == 'yes' or cont == "Yes":
+            continue
+        else:
+            break
+    pickle.dump(list1,F)
+    F.close()
+    
+
+def modify():
+    try:
+        F = open("bid.dat","rb")
+        F1 = open("temp.dat","wb")
+        global data
+        data = pickle.load(F)
+    except EOFError:
+        print(" ")
+    bid = int(input("Enter B.Id whose record you'd like to modify: "))
+    print()
+    for x in data:
+        if x[0] == bid:
+            print("*"*30,"Modification of a record","*"*30)
+            print("What do you like to modify?")
+            print("1. B.Id:",x[0])
+            print("2. Arrival:",x[1])
+            print("3. Destintion:",x[2])
+            print("4. DOJ:",x[3])
+            print("5. Fare(in rupees):",x[4])
+            print()
+            c = input("Enter a valid option: ")
+            print()
+            if c=='1':
+                x[0]=int(input("Re-Enter B.Id: "))
+                print("*"*28,"Record successfully modified","*"*28)
+            elif c=='2':
+                x[1]=input("Re-Enter Arrival: ")
+                print("*"*28,"Record successfully modified","*"*28)
+            elif c=="3":
+                x[2]=input("Re-Enter Destintion: ")
+                print("*"*28,"Record successfully modified","*"*28)
+            elif c=='4':
+                x[3]=input("Re-Enter DOJ: ")
+                print("*"*28,"Record successfully modified","*"*28)
+            elif c=='5':
+                x[4]=float(input("Re-Enter Fare: "))
+                print("*"*28,"Record successfully modified","*"*28)
+                print()
+                break
+            else:
+                print("Record not found")
+    pickle.dump(data,F1)
+    F.close()
+    F1.close()
+    os.remove("bid.dat")
+    os.rename("temp.dat","bid.dat")
+
+def delete():
+    F = open("bid.dat","rb")
+    F1 = open("temp.dat","wb")
+    data = pickle.load(F)
+    print("*"*30,"Deletion of a record","*"*30)
+    bid2 = int(input("Enter B.ID whose record you'd like to delete: "))
+    for i in data:
+        if bid2 != i[0]:
+            L = [i[0],i[1],i[2],i[3],i[4]]
+            pickle.dump(L,F1)
+    F.close()
+    F1.close()
+    print("*"*23,"Record successfully deleted","*"*23)
+    print()
+    os.remove("bid.dat")
+    os.rename("temp.dat","bid.dat")
+
+def display():
+    F = open("bid.dat","rb")
+    count = 1
+    try:
+        data = pickle.load(F)
+        for i in data:
+            print("DATA:",count)
+            print()
+            print("B.Id:",i[0])
+            print("Arrival:",i[1])
+            print("Destintion:",i[2])
+            print("DOJ:",i[3])
+            print("Fare(in rupees):",i[4])
+            count+=1
+            print()
+            print()
+    except:
+        print("End of File.")
+    F.close()
+
+def sd():
+    F = open("bid.dat","rb")
+    data = pickle.load(F)
+    bid1 = int(input("Enter B.Id whose record you'd like to check: "))
+    print()
+    for i in data:
+        if i[0] == bid1:
+             print("B.Id:",i[0])
+             print("Arrival:",i[1])
+             print("Destintion:",i[2])
+             print("DOJ:",i[3])
+             print("Fare:",i[4])
+             print()
+             break
+    else:
+        print("Record not found")
+    F.close()
+    
+while True:
+    print("1. Enter the details")
+    print("2. Modify the details")
+    print("3. Delete an entry")
+    print("4. Display all entries")
+    print("5. Selective display")
+    print("6. Exit")
+    print()
+    option = int(input("Select an option: "))
+    print(" ")
+    if option==1:
+        add()
+    elif option==2:
+        modify()
+    elif option==3:
+        delete()
+    elif option==4:
+        display()
+    elif option==5:
+        sd()
+    elif option==6:
+        exit()
+    else:
+        print("Kindly enter a valid option”)
+
+OUTPUT:
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 1
+****************************** Entry of a record *******************************
+Enter B.Id: 3423
+Enter arrival: Delhi
+Enter destination: Jaipur
+Enter doj: 22/3/22
+Enter fare: 6000
+******************************** Entry Inserted ********************************
+Would you like to add more records? Yes
+****************************** Entry of a record *******************************
+Enter B.Id: 3423
+Enter arrival: Delhi
+Enter destination: Jaipur
+Enter doj: 22/3/22
+Enter fare: 6000
+******************************** Entry Inserted ********************************
+Would you like to add more records? No
+
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 2
+ Enter B.Id whose record you'd like to modify: 2143
+***************************** Modification of a record *************************
+What do you like to modify?
+1. B.Id: 2143
+2. Arrival: Bangalore
+3. Destintion: Delhi
+4. DOJ: 4/8/22
+5. Fare(in rupees): 5600.0
+
+Enter a valid option: 3
+
+Re-Enter Destintion: Jaipur
+************************ Record successfully modified ************************
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 5
+ Enter B.Id whose record you'd like to check: 2143
+
+B.Id: 2143
+Arrival: Bangalore
+Destintion: Jaipur
+DOJ: 4/8/22
+Fare: 5600.0
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 4
+ 
+DATA: 1
+B.Id: 3423
+Arrival: Delhi
+Destintion: Jaipur
+DOJ: 22/3/22
+Fare(in rupees): 6000.0
+
+DATA: 2
+B.Id: 2143
+Arrival: Bangalore
+Destintion: Jaipur
+DOJ: 4/8/22
+Fare(in rupees): 5600.0
+
+
+
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 3
+****************************** Deletion of a record ******************************
+Enter B.ID whose record you'd like to delete: 2143
+*********************** Record successfully deleted ****************************
+
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 4
+
+DATA: 1
+B.Id: 3423
+Arrival: Delhi
+Destintion: Jaipur
+DOJ: 22/3/22
+Fare(in rupees): 6000.0
+
+1. Enter the details
+2. Modify the details
+3. Delete an entry
+4. Display all entries
+5. Selective display
+6. Exit
+Select an option: 6
+Exit
