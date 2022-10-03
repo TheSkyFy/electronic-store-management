@@ -6,4 +6,6 @@ Program is divided in 2 parts
 1. For Customer End       
       and
 2. For admin or store owner end       
-  ALso password protected ;)
+  ALso password protected ;)                    
+Complete program is in All_new.zip                    
+ All.zip is old one(one customer part)
