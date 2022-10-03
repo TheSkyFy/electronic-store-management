@@ -8,4 +8,4 @@ Program is divided in 2 parts
 2. For admin or store owner end       
   ALso password protected ;)                    
 Complete program is in All_new.zip                    
- All.zip is old one(one customer part)
+ All.zip is old one(only customer part)
