@@ -3,10 +3,6 @@ import os
 import re #regEX
 import pandas as pd
 from datetime import *
-#Modules/Library Pandas and regEX
-#iloc,  pd.read_csv 
-#install pandas
-#pip install pandas
 
 #--------------------------------------Display Menus-----------------------------------------------------
 
