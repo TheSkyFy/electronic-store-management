@@ -403,7 +403,6 @@ def admin_add():
 
     else:
         print("All changes have been made")
-        print("Do you want to make any further change(Y/N)")
         #To continue after admin_menu()
         pass
 
