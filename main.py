@@ -3,6 +3,10 @@ import os
 import re #regEX
 import pandas as pd
 from datetime import *
+#Modules/Library Pandas and regEX
+#iloc,  pd.read_csv 
+#install pandas
+#pip install pandas
 
 #--------------------------------------Display Menus-----------------------------------------------------
 
@@ -41,7 +45,7 @@ def product_categ():
 #-----------------------------Customer Info--- Contact details, etc---------------------------------
 
 def get_phone():
-    print("\n-------------------WELCOME TO FERGO STORE--------------------\n")
+    print("\n-------------------WELCOME TO ZROMA--------------------\n")
     number = int(input('Please type in your phone number.\n>'))
     print()
     mod_val = number % 1000000000 
@@ -338,6 +342,12 @@ def admin_add():
     product_categ()
     ch = int(input("Choose the category in which you want to add item: "))
     if ch == 1:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Phones_CS_project.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         L = []
         s_no = int(input("Enter S.no: "))
         p_name = input("Enter name of the phone: ")
@@ -353,6 +363,12 @@ def admin_add():
         pass
 
     if ch == 2:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Laptop_CS_project.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         L = []
         s_no = int(input("Enter S.no: "))
         p_name = input("Enter name of the laptop: ")
@@ -368,6 +384,12 @@ def admin_add():
         pass
 
     if ch == 3:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Speakers_CS.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         L = []
         s_no = int(input("Enter S.no: "))
         p_name = input("Enter name of the speaker: ")
@@ -383,6 +405,12 @@ def admin_add():
         pass
 
     if ch == 4:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Earphone_CS.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         L = []
         s_no = int(input("Enter S.no: "))
         p_name = input("Enter name of the earphone: ")
@@ -400,12 +428,18 @@ def admin_add():
     else:
         print("All changes have been made")
         #To continue after admin_menu()
-        pass
+        admin_menu()
 
 def admin_del():
     product_categ()
     choice = int(input("Select the category in which you want to delete item: "))
     if choice == 1:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Phones_CS_project.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         lines = list()
         del_ch = input("Enter the item no. which you want to delete: ")
         with open('Phones_CS_project.csv', 'r') as reader:
@@ -421,6 +455,12 @@ def admin_del():
             writer.writerows(lines)
 
     elif choice == 2:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Laptop_CS_project.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         lines = list()
         del_ch = input("Enter the item no. which you want to delete: ")
         with open('Laptop_CS_project.csv', 'r') as reader:
@@ -436,6 +476,12 @@ def admin_del():
             writer.writerows(lines)
         
     elif choice == 3:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Speakers_CS.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         lines = list()
         del_ch = input("Enter the item no. which you want to delete: ")
         with open('Speakers_CS.csv', 'r') as reader:
@@ -451,6 +497,12 @@ def admin_del():
             writer.writerows(lines)
         
     elif choice == 4:
+        column_names = ["SID", "Name", "Price"]
+        print("\n================================================================\n")
+        text = pd.read_csv("Earphone_CS.csv", names=column_names)
+        print(text)
+        print("\n================================================================\n\n")
+
         lines = list()
         del_ch = input("Enter the item no. which you want to delete: ")
         with open('Earphone_CS.csv', 'r') as reader:
@@ -640,31 +692,25 @@ def admin_dis():
             print("\n================================================================\n\n")
             
     elif option == 2:
-            f = open('Laptop_CS_project.csv', 'r')
             column_names = ["SID", "Name", "Price"]
             print("\n================================================================\n")
             text = pd.read_csv("Laptop_CS_project.csv", names=column_names)
             print(text)
             print("\n================================================================\n\n")
-            f.close
 
     elif option == 3:
-            f = open('Speakers_CS.csv', 'r')
             column_names = ["SID", "Name", "Price"]
             print("\n================================================================\n")
             text = pd.read_csv("Speakers_CS.csv", names=column_names)
             print(text)
             print("\n================================================================\n\n")
-            f.close
             
     elif option == 4:
-            f = open('Earphone_CS.csv', 'r')
             column_names = ["SID", "Name", "Price"]
             print("\n================================================================\n")
             text = pd.read_csv("Earphone_CS.csv", names=column_names)
             print(text)
             print("\n================================================================\n\n")
-            f.close
     elif option == 5:
         admin_menu()       
     else:
@@ -677,7 +723,7 @@ def admin_dis():
 def login_pass():
     print("*"*30,"ADMIN LOGIN","*"*30)
     login1 = "12345678"
-    pswd1 = "Yowai_Mo"
+    pswd1 = "enchant"
     login = input("KINDLY ENTER LOGIN ID: ")
     print()
     while login != login1:
